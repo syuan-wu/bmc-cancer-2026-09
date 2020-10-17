@@ -1,0 +1,22 @@
+kirc_mutation<-read.csv("C:/Users/syuan/Desktop/Master/kirc/Bioportal/kirc_Mutated_Genes_856.txt",header=F)
+kirc_mutation<-apply(kirc_mutation,2,as.character)
+class(kirc_mutation[1,1])
+x<-function(x){strsplit(x,"\t")}
+kirc_mutation<-t(as.data.frame(apply(kirc_mutation,2,x)))
+rownames(kirc_mutation)<-NULL
+colnames(kirc_mutation)<-kirc_mutation[1,]
+kirc_mutation<-kirc_mutation[-1,]
+kirc_mutation<-as.data.frame(kirc_mutation)
+write.csv(kirc_mutation,"C:/Users/syuan/Desktop/Master/kirc/Bioportal/kirc_mutation.csv")
+sum(kirc_mutation$`Is Cancer Gene (source: OncoKB)`=="Yes")
+#
+kirc_CNA<-read.csv("C:/Users/syuan/Desktop/Master/kirc/Bioportal/kirc_CNA_Genes_528.txt",header=F)
+kirc_CNA<-apply(kirc_CNA,2,as.character)
+class(kirc_CNA[1,1])
+x<-function(x){strsplit(x,"\t")}
+kirc_CNA<-t(as.data.frame(apply(kirc_CNA,2,x)))
+rownames(kirc_CNA)<-NULL
+colnames(kirc_CNA)<-kirc_CNA[1,]
+kirc_CNA<-kirc_CNA[-1,]
+kirc_CNA<-as.data.frame(kirc_CNA)
+write.csv(kirc_CNA,"C:/Users/syuan/Desktop/Master/kirc/Bioportal/kirc_CNA.csv")
